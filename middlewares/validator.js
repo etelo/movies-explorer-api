@@ -1,7 +1,5 @@
 const { celebrate, Joi } = require("celebrate");
 const validator = require("validator");
-// eslint-disable-next-line no-unused-vars
-const { ObjectId } = require("mongoose").Types;
 
 exports.validateSignUp = celebrate({
   body: Joi.object().keys({
@@ -23,15 +21,15 @@ exports.validateSignUp = celebrate({
 
 exports.validateSignIn = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().email().required().min(2),
-    password: Joi.string().required().min(2),
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
   }),
 });
 
 exports.validateUpdate = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    email: Joi.string().required().email().min(2),
+    email: Joi.string().required().email(),
   }),
 });
 
@@ -45,7 +43,7 @@ exports.validateCreateMovie = celebrate({
   body: Joi.object().keys({
     country: Joi.string().required().min(1),
     director: Joi.string().required().min(1),
-    duration: Joi.number().required().min(1),
+    duration: Joi.number().required(),
     year: Joi.string().required().min(1),
     description: Joi.string().required().min(1),
     image: Joi.string()
@@ -78,27 +76,27 @@ exports.validateCreateMovie = celebrate({
       }),
     nameRU: Joi.string().required().min(1),
     nameEN: Joi.string().required().min(1),
-    movieId: Joi.number().required().min(1),
+    movieId: Joi.number().required(),
   }),
 });
 
 exports.validateUpdateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    email: Joi.string().required().email().min(2),
+    email: Joi.string().required().email(),
   }),
 });
 exports.validateSignUp = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email().min(2),
-    password: Joi.string().required().min(2),
+    email: Joi.string().required().email(),
+    password: Joi.string().required(),
     name: Joi.string().required().min(2).max(30),
   }),
 });
 
 exports.validateSignIn = celebrate({
   body: Joi.object().keys({
-    email: Joi.string().required().email().min(2),
-    password: Joi.string().required().min(2),
+    email: Joi.string().required().email(),
+    password: Joi.string().required(),
   }),
 });

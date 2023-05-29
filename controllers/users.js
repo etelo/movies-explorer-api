@@ -46,7 +46,6 @@ module.exports.createUser = (req, res, next) => {
               _id: newUser._id,
               email: newUser.email,
             })
-          // eslint-disable-next-line function-paren-newline
         )
         .catch((err) => {
           if (err.code === 11000) {

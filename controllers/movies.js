@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const Movie = require("../models/movie");
 const NotFoundError = require("../errors/not-found-error");
 const ForbiddenError = require("../errors/forbidden-error");
@@ -14,7 +13,7 @@ module.exports.getMovies = async (req, res, next) => {
     .catch(next);
 };
 
-// POST /movies # создаёт фильм с переданными в теле # country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail, movieId
+// POST /movies # создаёт фильм с переданными в теле
 module.exports.createMovie = async (req, res, next) => {
   const {
     country,
@@ -79,7 +78,7 @@ module.exports.deleteMovieById = async (req, res, next) => {
     .then((movie) => {
       Movie.deleteOne({ _id: movie._id }).then(() => {
         res.status(200).send({ message: "Фильм удален" });
-      });
+      }).catch(next);
     })
     .catch((err) => {
       if (err.name === "CastError") {
